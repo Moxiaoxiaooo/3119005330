@@ -2,11 +2,9 @@ package com.moxiaoxiao;
 
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.CharBuffer;
 
 public class FileReaderUtils {
 
@@ -29,6 +27,8 @@ public class FileReaderUtils {
         while ((size = fileReader.read(chars)) != -1) {
             stringBuffer.append(new String(chars,0,size));
         }
+        fileReader.close();
         return stringBuffer.toString();
+
     }
 }
