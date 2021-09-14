@@ -1,11 +1,28 @@
 package com.moxiaoxiao;
 
+import com.moxiaoxiao.exception.FileEmptyException;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Map;
+
 public class App {
-    public static void main(String[] args){
-        //args[0]：原文文件  args[1]：抄袭版论文的文件 args[2]：答案文件
-        /**
-         * todo 先写一个FileReaderUtils，获取参数读取文件流，获取文件内容后通过AnalysisUtils类来解析所有词频，最后通过MathUtils计算得出结果
-         */
+    public static void main(String[] args) {
+        //args[0]：原文文件  args[1]：抄袭版论文的文件 args[2]：答案文件.3
+        try {
+            String sourceText = FileUtils.readFileToString(args[0]);
+            String targetText = FileUtils.readFileToString(args[1]);
+            Map<String, Integer> sourceMap = AnalysisUtils.getTermsAndCounts(sourceText);
+            Map<String, Integer> targetMap = AnalysisUtils.getTermsAndCounts(targetText);
+            Double rate = MathUtils.getRepeatRate(sourceMap, targetMap);
+            FileUtils.writeAns(args[2], args[0], args[1], rate);
+        } catch (FileNotFoundException e) {
+            System.out.println("原论文与抄袭论文不存在！");
+        } catch (FileEmptyException e) {
+            System.out.println("答案文件已存在，请使用新路径以避免覆盖！");
+        }catch (IOException e) {
+            System.out.println("文件读取有异常！");
+        }
 
     }
 }

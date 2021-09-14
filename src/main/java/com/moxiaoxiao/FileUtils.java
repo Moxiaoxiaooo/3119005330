@@ -44,7 +44,7 @@ public class FileUtils {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("原文：").append(sourceFileName)
                 .append("\n抄袭版论文的文件：").append(targetFileName)
-                .append("\n重复率：").append(repeatRate);
+                .append("\n重复率：").append(String.format("%.2f", repeatRate));
         fileWriter.write(stringBuilder.toString());
         fileWriter.close();
         return true;
