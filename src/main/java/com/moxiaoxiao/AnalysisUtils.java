@@ -26,11 +26,13 @@ public class AnalysisUtils {
         Map<String, Integer> resultMap = new HashMap<>();
         Set<String> ignoreNatureStrSet = new HashSet<String>() {
             {
-                add("w");
-                add("null");
+                //要忽略单词的词性
+                add("w");//标点符号
+                add("null");//回车，空格
             }
         };
         for (Term term : terms) {
+            //词性在忽略列表里
             if (ignoreNatureStrSet.contains(term.getNatureStr())) {
                 continue;
             }
