@@ -1,6 +1,7 @@
 package com.moxiaoxiao;
 
 
+import com.moxiaoxiao.exception.FileEmptyException;
 import org.ansj.domain.Term;
 import org.ansj.splitWord.analysis.BaseAnalysis;
 
@@ -18,9 +19,9 @@ public class AnalysisUtils {
      * @param text 要被分析的文本
      * @return 文本的单词词频map，key：单词，value：词频
      */
-    public static Map<String, Integer> getTermsAndCounts(String text) {
+    public static Map<String, Integer> getTermsAndCounts(String text) throws FileEmptyException {
         if (text == null || "".equals(text)) {
-            return null;
+            throw new FileEmptyException();
         }
         List<Term> terms = BaseAnalysis.parse(text).getTerms();
         Map<String, Integer> resultMap = new HashMap<>();
