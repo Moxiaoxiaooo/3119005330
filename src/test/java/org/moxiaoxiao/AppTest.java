@@ -59,7 +59,7 @@ public class AppTest {
 
     @Test
     public void testMain() throws Exception{
-        String[] args = {"orig.txt", "orig.txt",""};
+        String[] args = {"orig.txt", "orig.txt","ans.txt"};
         App.main(args);
     }
 
