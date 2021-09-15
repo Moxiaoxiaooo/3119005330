@@ -56,4 +56,11 @@ public class AppTest {
         String[] args = {"", "",""};
         App.main(args);
     }
+
+    @Test
+    public void testMain() throws Exception{
+        String[] args = {"orig.txt", "orig.txt",""};
+        App.main(args);
+    }
+
 }

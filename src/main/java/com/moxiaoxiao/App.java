@@ -21,7 +21,7 @@ public class App {
                 FileUtils.writeAns(args[2], args[0], args[1], rate);
                 System.out.println("已将结果输出至：" + args[2]);
             } catch (FileNotFoundException e) {
-                System.out.println("原论文与抄袭论文不存在！");
+                System.out.println("原论文与抄袭论文不存在或答案输出路径为空！");
             } catch (FileEmptyException e) {
                 System.out.println("答案文件已存在，请使用新路径以避免覆盖！");
             } catch (IOException e) {
