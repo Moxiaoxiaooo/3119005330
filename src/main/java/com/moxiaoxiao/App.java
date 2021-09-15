@@ -19,6 +19,7 @@ public class App {
                 Map<String, Integer> targetMap = AnalysisUtils.getTermsAndCounts(targetText);
                 Double rate = MathUtils.getRepeatRate(sourceMap, targetMap);
                 FileUtils.writeAns(args[2], args[0], args[1], rate);
+                System.out.println("已将结果输出至：" + args[2]);
             } catch (FileNotFoundException e) {
                 System.out.println("原论文与抄袭论文不存在！");
             } catch (FileEmptyException e) {
@@ -26,7 +27,7 @@ public class App {
             } catch (IOException e) {
                 System.out.println("文件读取有异常！");
             }
-            System.out.println("已将结果输出至：" + args[2]);
+
         }
     }
 }

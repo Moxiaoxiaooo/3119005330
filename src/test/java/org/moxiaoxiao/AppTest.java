@@ -3,6 +3,7 @@ package org.moxiaoxiao;
 import static org.junit.Assert.assertTrue;
 
 import com.moxiaoxiao.AnalysisUtils;
+import com.moxiaoxiao.App;
 import com.moxiaoxiao.FileUtils;
 import com.moxiaoxiao.MathUtils;
 import com.moxiaoxiao.exception.FileEmptyException;
@@ -48,5 +49,11 @@ public class AppTest {
         Map<String, Integer> map2 = AnalysisUtils.getTermsAndCounts(context2);
         Double rate = MathUtils.getRepeatRate(map, map2);
         FileUtils.writeAns("ans.txt", path, path2, rate);
+    }
+
+    @Test
+    public void testEmptyMain() throws Exception{
+        String[] args = {"", "",""};
+        App.main(args);
     }
 }
